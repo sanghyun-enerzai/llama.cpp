@@ -1,6 +1,6 @@
-ifndef LLAMA_MAKEFILE
-$(error The Makefile build is deprecated. Use the CMake build instead. For more details, see https://github.com/ggml-org/llama.cpp/blob/master/docs/build.md)
-endif
+GGML_NO_LLAMAFILE := 1
+GGML_NO_CCACHE := 1
+GGML_NO_CPU_AARCH64 := 1
 
 # Define the default target now so that it is always the first target
 BUILD_TARGETS = \
@@ -502,8 +502,8 @@ endif
 ifneq ($(filter armv8%,$(UNAME_M)),)
 	# Raspberry Pi 3, 4, Zero 2 (32-bit)
 	@echo "ARM V8"
-	MK_CFLAGS   += -mfpu=neon-fp-armv8+fp16 -mfp16-format=ieee -mno-unaligned-access
-	MK_CXXFLAGS += -mfpu=neon-fp-armv8+fp16 -mfp16-format=ieee -mno-unaligned-access
+	MK_CFLAGS   += -mfp16-format=ieee -mno-unaligned-access
+	MK_CXXFLAGS += -mfp16-format=ieee -mno-unaligned-access
 endif
 
 ifneq ($(filter ppc64%,$(UNAME_M)),)

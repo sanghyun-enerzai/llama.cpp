@@ -213,20 +213,18 @@ inline float hsum(__m512 x) {
 template <typename T, typename U> T load(const U *);
 
 #if defined(__ARM_NEON)
-#ifndef _GCC_ARM_NEON_H
-#include <arm_neon.h>
-#endif
 template <> inline float32x4_t load(const float *p) {
     return vld1q_f32(p);
 }
-#if !defined(_MSC_VER) && defined(__ARM_FEATURE_FP16_VECTOR_ARITHMETIC)
+#if !defined(_MSC_VER)
+// FIXME: this should check for __ARM_FEATURE_FP16_VECTOR_ARITHMETIC
 template <> inline float16x8_t load(const ggml_fp16_t *p) {
     return vld1q_f16((const float16_t *)p);
 }
 template <> inline float32x4_t load(const ggml_fp16_t *p) {
     return vcvt_f32_f16(vld1_f16((const float16_t *)p));
 }
-#endif // _MSC_VER && __ARM_FEATURE_FP16_VECTOR_ARITHMETIC
+#endif // _MSC_VER
 #endif // __ARM_NEON
 
 #if defined(__SSE__) || defined(__AVX__) || defined(__AVX2__) || defined(__AVX512F__)
