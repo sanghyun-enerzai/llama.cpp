@@ -1369,21 +1369,6 @@ rpc-server: examples/rpc/rpc-server.cpp \
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 endif # GGML_RPC
 
-llama-server: \
-	examples/server/server.cpp \
-	examples/server/utils.hpp \
-	examples/server/httplib.h \
-	examples/server/index.html.hpp \
-	examples/server/loading.html.hpp \
-	common/chat.cpp \
-	common/chat.h \
-	common/chat-template.hpp \
-	common/json.hpp \
-	common/minja.hpp \
-	$(OBJ_ALL)
-	$(CXX) $(CXXFLAGS) -c $< -o $(call GET_OBJ_FILE, $<)
-	$(CXX) $(CXXFLAGS) $(filter-out %.h %.hpp $<,$^) -Iexamples/server $(call GET_OBJ_FILE, $<) -o $@ $(LDFLAGS) $(LWINSOCK2)
-
 # Portable equivalent of `cd examples/server/public && xxd -i $(notdir $<) ../$(notdir $<).hpp`:
 examples/server/%.hpp: examples/server/public/% FORCE Makefile
 	@( export NAME=$(subst .,_,$(subst -,_,$(notdir $<))) && \
