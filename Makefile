@@ -501,7 +501,6 @@ endif
 
 ifneq ($(filter armv8%,$(UNAME_M)),)
 	# Raspberry Pi 3, 4, Zero 2 (32-bit)
-	@echo "ARM V8"
 	MK_CFLAGS   += -mfp16-format=ieee -mno-unaligned-access
 	MK_CXXFLAGS += -mfp16-format=ieee -mno-unaligned-access
 endif
