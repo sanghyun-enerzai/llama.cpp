@@ -154,8 +154,6 @@ inline static float vmaxvq_f32(float32x4_t v) {
 //    return res;
 //}
 
-inline static vld1_f16
-
 inline static uint8x8_t vzip1_u8(uint8x8_t a, uint8x8_t b) {
     uint8x8_t res;
 
