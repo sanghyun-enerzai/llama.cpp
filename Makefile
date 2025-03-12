@@ -942,6 +942,18 @@ OBJ_GGML = \
 
 OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama.o \
+	$(DIR_LLAMA)/llama-model-loader.o \
+	$(DIR_LLAMA)/llama-cparams.o \
+	$(DIR_LLAMA)/llama-context.o \
+	$(DIR_LLAMA)/llama-chat.o \
+	$(DIR_LLAMA)/llama-batch.o \
+	$(DIR_LLAMA)/llama-arch.o \
+	$(DIR_LLAMA)/llama-adapter.o \
+	$(DIR_LLAMA)/llama-hparams.o \
+	$(DIR_LLAMA)/llama-impl.o \
+	$(DIR_LLAMA)/llama-kv-cache.o \
+	$(DIR_LLAMA)/llama-mmap.o \
+	$(DIR_LLAMA)/llama-quant.o \
 	$(DIR_LLAMA)/llama-model.o \
 	$(DIR_LLAMA)/llama-vocab.o \
 	$(DIR_LLAMA)/llama-grammar.o \
@@ -953,6 +965,7 @@ OBJ_COMMON = \
 	$(DIR_COMMON)/common.o \
 	$(DIR_COMMON)/arg.o \
 	$(DIR_COMMON)/log.o \
+	$(DIR_COMMON)/llguidance.o \
 	$(DIR_COMMON)/console.o \
 	$(DIR_COMMON)/ngram-cache.o \
 	$(DIR_COMMON)/sampling.o \
