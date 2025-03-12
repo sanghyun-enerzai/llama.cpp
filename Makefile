@@ -942,6 +942,7 @@ OBJ_GGML = \
 
 OBJ_LLAMA = \
 	$(DIR_LLAMA)/llama.o \
+	$(DIR_LLAMA)/llama-model.o \
 	$(DIR_LLAMA)/llama-vocab.o \
 	$(DIR_LLAMA)/llama-grammar.o \
 	$(DIR_LLAMA)/llama-sampling.o \
