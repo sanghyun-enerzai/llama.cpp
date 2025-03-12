@@ -964,6 +964,7 @@ DIR_LLAMA = src
 DIR_COMMON = common
 
 OBJ_GGML = \
+	$(DIR_GGML)/src/gguf.o \
 	$(DIR_GGML)/src/ggml.o \
 	$(DIR_GGML)/src/ggml-alloc.o \
 	$(DIR_GGML)/src/ggml-backend.o \
