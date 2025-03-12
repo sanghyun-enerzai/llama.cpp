@@ -213,6 +213,9 @@ inline float hsum(__m512 x) {
 template <typename T, typename U> T load(const U *);
 
 #if defined(__ARM_NEON)
+#ifndef _GCC_ARM_NEON_H
+#include <arm_neon.h>
+#endif
 template <> inline float32x4_t load(const float *p) {
     return vld1q_f32(p);
 }

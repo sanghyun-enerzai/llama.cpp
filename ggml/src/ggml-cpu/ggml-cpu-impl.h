@@ -143,16 +143,18 @@ inline static float vmaxvq_f32(float32x4_t v) {
             MAX(vgetq_lane_f32(v, 2), vgetq_lane_f32(v, 3)));
 }
 
-inline static int32x4_t vcvtnq_s32_f32(float32x4_t v) {
-    int32x4_t res;
+//inline static int32x4_t vcvtnq_s32_f32(float32x4_t v) {
+//    int32x4_t res;
+//
+//    res[0] = roundf(vgetq_lane_f32(v, 0));
+//    res[1] = roundf(vgetq_lane_f32(v, 1));
+//    res[2] = roundf(vgetq_lane_f32(v, 2));
+//    res[3] = roundf(vgetq_lane_f32(v, 3));
+//
+//    return res;
+//}
 
-    res[0] = roundf(vgetq_lane_f32(v, 0));
-    res[1] = roundf(vgetq_lane_f32(v, 1));
-    res[2] = roundf(vgetq_lane_f32(v, 2));
-    res[3] = roundf(vgetq_lane_f32(v, 3));
-
-    return res;
-}
+inline static vld1_f16
 
 inline static uint8x8_t vzip1_u8(uint8x8_t a, uint8x8_t b) {
     uint8x8_t res;
