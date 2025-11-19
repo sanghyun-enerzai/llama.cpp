@@ -81,7 +81,7 @@ struct ggml_compute_params {
 #define ggml_vld1q_u32(w,x,y,z) { (w), (x), (y), (z) }
 #endif // _MSC_VER
 
-#if !defined(__aarch64__) && (__ARM_ARCH < 8)
+#if !defined(__aarch64__)
 
 // 32-bit ARM compatibility
 
@@ -124,17 +124,6 @@ inline static float vmaxvq_f32(float32x4_t v) {
     return
         MAX(MAX(vgetq_lane_f32(v, 0), vgetq_lane_f32(v, 1)),
             MAX(vgetq_lane_f32(v, 2), vgetq_lane_f32(v, 3)));
-}
-
-inline static int32x4_t vcvtnq_s32_f32(float32x4_t v) {
-    int32x4_t res;
-
-    res[0] = roundf(vgetq_lane_f32(v, 0));
-    res[1] = roundf(vgetq_lane_f32(v, 1));
-    res[2] = roundf(vgetq_lane_f32(v, 2));
-    res[3] = roundf(vgetq_lane_f32(v, 3));
-
-    return res;
 }
 
 inline static uint8x8_t vzip1_u8(uint8x8_t a, uint8x8_t b) {
